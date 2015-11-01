@@ -1,6 +1,17 @@
+" Activate pathogen
+execute pathogen#infect()
+
+" enable syntax
+syntax on
+
 " enable linenumbers
 set number
 
 " backspace support
 set backspace=indent,eol,start
+
+" base16 color settings
+set background=dark
+let base16colorspace=256
+colorscheme base16-default
 
