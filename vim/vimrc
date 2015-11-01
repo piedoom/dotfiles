@@ -1,0 +1,6 @@
+" enable linenumbers
+set number
+
+" backspace support
+set backspace=indent,eol,start
+
