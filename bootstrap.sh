@@ -40,15 +40,22 @@ cd ~/.vim/bundle
 git clone https://github.com/scrooloose/nerdtree.git
 cd $DIR
 
+# Install NERDTree-tabs
+cd ~/.vim/bundle
+git clone https://github.com/jistr/vim-nerdtree-tabs.git
+cd $DIR
+
 # Install syntastic
 cd ~/.vim/bundle
 git clone https://github.com/scrooloose/syntastic.git
 cd $DIR
 
+
 # Install oh my zsh
 echo "Installing Oh My ZSH"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 chsh -s `which zsh`
+
 
 # Install zshrc
 ln -s $DIR/zsh/zshrc ~/.zshrc
