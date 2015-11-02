@@ -95,3 +95,7 @@ nnoremap <C-n>          :NERDTreeTabsToggle<CR>
 " misc key bindings
 nnoremap <C-x> :x!<CR>
 
+" specific filetype stuff
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+
