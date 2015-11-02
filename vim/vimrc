@@ -12,7 +12,8 @@ set backspace=indent,eol,start
 
 " color settings
 syntax enable
-colorscheme jellybeans
+set background=dark
+colorscheme solarized
 
 " highlight cursor
 set cursorline
@@ -20,6 +21,9 @@ set cursorcolumn
 
 " column limit
 set colorcolumn=80
+
+" mouse support
+set mouse=a
 
 " airline
 set laststatus=2
@@ -67,4 +71,23 @@ set softtabstop=4
 set tabstop=8
 set smarttab
 set autoindent
+
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+" tab config
+nnoremap <C-S-Left> :tabprevious<CR>
+nnoremap <C-S-Right>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+
+" misc key bindings
+nnoremap <C-w> :x<CR>
 

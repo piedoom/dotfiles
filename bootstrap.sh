@@ -14,19 +14,35 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Install vimrc
 echo "Installing vim configs..."
 ln -s $DIR/vim/vimrc ~/.vimrc
+mkdir -p ~/.vim/undodir/
 
 # Installing vim configs
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-# Install monokai for vim
+# Install solarized
 cd ~/.vim/bundle
-git clone https://github.com/nanotech/jellybeans.vim.git
+git clone https://github.com/altercation/vim-colors-solarized.git
 cd $DIR
 
 # Install airline
 cd ~/.vim/bundle
 git clone https://github.com/bling/vim-airline.git
+cd $DIR
+
+# Install numbers.vim
+cd ~/.vim/bundle
+git clone https://github.com/myusuf3/numbers.vim.git
+cd $DIR
+
+# Install NERDTree
+cd ~/.vim/bundle
+git clone https://github.com/scrooloose/nerdtree.git
+cd $DIR
+
+# Install syntastic
+cd ~/.vim/bundle
+git clone https://github.com/scrooloose/syntastic.git
 cd $DIR
 
 # Install oh my zsh
@@ -37,6 +53,6 @@ chsh -s `which zsh`
 # Install zshrc
 ln -s $DIR/zsh/zshrc ~/.zshrc
 
-# Install base16-shell
-git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+# Install ZSH syntax highlighting
+git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
