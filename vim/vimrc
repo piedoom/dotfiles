@@ -85,7 +85,7 @@ let g:syntastic_check_on_wq = 0
 
 " NERDTree config
 let g:nerdtree_tabs_open_on_console_startup = 1
-let NERDTreeMapOpenInTab = '<ENTER>'
+let g:nerdtree_tabs_synchronize_view = 1
 
 " tab config
 nnoremap <C-S-Left>     :tabprevious<CR>
