@@ -27,7 +27,12 @@ cd $DIR
 
 # Install airline
 cd ~/.vim/bundle
-git clone https://github.com/bling/vim-airline.git
+git clone https://github.com/vim-airline/vim-airline.git
+cd $DIR
+
+# Install airline themes
+cd ~/.vim/bundle
+git clone https://github.com/vim-airline/vim-airline-themes.git
 cd $DIR
 
 # Install numbers.vim
@@ -50,12 +55,33 @@ cd ~/.vim/bundle
 git clone https://github.com/scrooloose/syntastic.git
 cd $DIR
 
+# Install neovim
+
+if which neovim >/dev/null; then
+    echo "Neovim already installed"
+else
+    case `uname` in
+        'FreeBSD')
+            echo "I need sudo access to install neovim"
+            sudo pkg install neovim
+            ;;
+        'Darwin')
+            brew install neovim/neovim/neovim
+            ;;
+        *)
+            echo "I don't know how to install neovim on your system"
+            ;;
+    esac
+        mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+        ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+        ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
+fi
+
 
 # Install oh my zsh
 echo "Installing Oh My ZSH"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 chsh -s `which zsh`
-
 
 # Install zshrc
 ln -s $DIR/zsh/zshrc ~/.zshrc
