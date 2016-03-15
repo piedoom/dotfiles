@@ -77,6 +77,13 @@ else
         ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 fi
 
+# Custom screenshots location
+case `uname` in
+    'Darwin')
+        mkdir ~/Screenshots
+        defaults write com.apple.screencapture location ~/Screenshots
+        killall SystemUIServer
+esac
 
 # Install oh my zsh
 echo "Installing Oh My ZSH"
@@ -92,3 +99,4 @@ git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/cu
 # Install RVM
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable
+
