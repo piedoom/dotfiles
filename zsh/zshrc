@@ -84,4 +84,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # RVM
-source /Users/squiffy/.rvm/scripts/rvm
+source ~/.rvm/scripts/rvm
