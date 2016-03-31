@@ -20,6 +20,18 @@ mkdir -p ~/.vim/undodir/
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
+# cygwin stuff
+# gotta do checks so this doesn't fuck up everything else
+lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
+install apt-cyg /bin
+
+apt-cyg install wget
+apt-cyg install git
+apt-cyg install vim
+apt-cyg install zsh
+apt-cyg install gpg
+apt-cyg install curl
+
 # Install solarized
 cd ~/.vim/bundle
 git clone https://github.com/altercation/vim-colors-solarized.git
@@ -85,14 +97,7 @@ case `uname` in
         killall SystemUIServer
 esac
 
-# cygwin stuff
-lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
-install apt-cyg /bin
 
-apt-cyg install wget
-apt-cyg install git
-apt-cyg install vim
-apt-cyg install zsh
 
 # Install oh my zsh
 echo "Installing Oh My ZSH"
@@ -109,3 +114,5 @@ git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/cu
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable
 
+# create a functional shortcut on the desktop that sets up cygwin to use zsh instead of bash
+#####
