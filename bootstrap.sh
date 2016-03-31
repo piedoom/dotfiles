@@ -85,6 +85,15 @@ case `uname` in
         killall SystemUIServer
 esac
 
+# cygwin stuff
+lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
+install apt-cyg /bin
+
+apt-cyg install wget
+apt-cyg install git
+apt-cyg install vim
+apt-cyg install zsh
+
 # Install oh my zsh
 echo "Installing Oh My ZSH"
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
