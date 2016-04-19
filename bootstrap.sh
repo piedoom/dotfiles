@@ -7,6 +7,9 @@ rm -rf ~/.zshrc
 rm -rf ~/.oh-my-zsh
 rm -rf ~/.config
 
+# cyg specific
+rm -rf ~/.colors
+
 
 # Get directory of dotfiles
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -21,16 +24,18 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 # cygwin stuff
-# gotta do checks so this doesn't fuck up everything else
-lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
-install apt-cyg /bin
-
-apt-cyg install wget
-apt-cyg install git
-apt-cyg install vim
-apt-cyg install zsh
-apt-cyg install gpg
-apt-cyg install curl
+case `uname -o` in 
+    'Cygwin')
+        echo 'installing Cygwin specific packages'
+        lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
+        install apt-cyg /bin
+        apt-cyg install wget
+        apt-cyg install git
+        apt-cyg install vim
+        apt-cyg install zsh
+        apt-cyg install gpg
+        apt-cyg install curl      
+esac
 
 # Install solarized
 cd ~/.vim/bundle
@@ -109,6 +114,23 @@ ln -s $DIR/zsh/zshrc ~/.zshrc
 
 # Install ZSH syntax highlighting
 git clone git://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+# solarize MinTTY for Cygwin
+# install menlo
+case `uname -o` in
+    'Cygwin')
+        echo 'Solarizing MinTTY'
+        # solarize colors
+        mkdir ~/.colors
+        cd ~/.colors
+        git clone https://github.com/mavnn/mintty-colors-solarized .
+        echo 'source ~/.colors/sol.dark' >> ~/.zshrc
+        echo 'ZSH_THEME="agnoster"' >> ~/.zshrc
+        
+        # install font 
+        # wget https://github.com/abertsch/Menlo-for-Powerline/blob/master/Menlo%20for%20Powerline.ttf?raw=true menlo.ttf
+        
+esac
 
 # Install RVM
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
